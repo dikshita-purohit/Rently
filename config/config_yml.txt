@@ -1,0 +1,3 @@
+Secret: mysecretPaths
+ImagePath: .\images\seller\Sell
+DocPath: .\images\seller\Doc

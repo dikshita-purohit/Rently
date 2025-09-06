@@ -1,0 +1,5 @@
+//MongoDB credentials
+
+MongoDB: MONGODB url
+MongoUser: UserName
+MongoPasswd: Password

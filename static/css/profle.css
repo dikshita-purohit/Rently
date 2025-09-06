@@ -1,0 +1,102 @@
+
+.profile-head{
+    width: 200%;
+    height: 400%;
+    margin-top: 20%;
+    margin-bottom: 10%;
+    font-size: large;
+    border-radius: 14px;
+    margin-left: 2%;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    background-image: linear-gradient(to top, #D8D9DB 0%, #fff 80%, #FDFDFD 100%);
+    align-items: center;
+    justify-content: center;
+    box-shadow: 20px 20px 60px #bebebe, -20px -20px 60px #ffffff;
+}
+
+.file{
+    margin: 5%;
+    height: 50%;
+    width: 70%;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    border-radius: 20%;
+    background-image: linear-gradient(to top, #D8D9DB 0%, #fff 80%, #FDFDFD 100%);
+}
+
+.profile-head a{
+  margin-left: 300%;
+  margin-top: 10%;
+}
+.profile-edit-btn {
+    display: flex;
+    margin-left: 300%;
+    margin-top: 20%;
+    align-items: center;
+    justify-content: center;
+    outline: none;
+    cursor: pointer;
+    width: 90px;
+    height: 40px;
+    background-image: linear-gradient(to top, #D8D9DB 0%, #fff 80%, #FDFDFD 100%);
+    border-radius: 30px;
+    border: 1px solid #8F9092;
+    transition: all 0.2s ease;
+    font-family: "Source Sans Pro", sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    color: #606060;
+    text-shadow: 0 1px #fff;
+  }
+  
+  .profile-edit-btn:hover {
+    box-shadow: 0 4px 3px 1px #FCFCFC, 0 6px 8px #D6D7D9, 0 -4px 4px #CECFD1, 0 -6px 4px #FEFEFE, inset 0 0 3px 3px #CECFD1;
+  }
+  
+  .profile-edit-btn:active {
+    box-shadow: 0 4px 3px 1px #FCFCFC, 0 6px 8px #D6D7D9, 0 -4px 4px #CECFD1, 0 -6px 4px #FEFEFE, inset 0 0 5px 3px #999, inset 0 0 30px #aaa;
+  }
+  
+  .profile-edit-btn:focus {
+    box-shadow: 0 4px 3px 1px #FCFCFC, 0 6px 8px #D6D7D9, 0 -4px 4px #CECFD1, 0 -6px 4px #FEFEFE, inset 0 0 5px 3px #999, inset 0 0 30px #aaa;
+  }
+  
+  
+  .histo{
+    margin-top: 40%;
+    margin-left: 5%;
+  }
+
+ 
+
+  /*button*/
+
+  .buttons{
+    margin-left: 4%;
+  }
+button {
+  padding: 1.5%;
+  border: 1% black;
+  margin: 10%;
+  margin-left: 40%;
+  margin-right: 5%;
+  padding: 2%;
+  padding-left: 6%;
+  padding-right: 6%;
+  font-size: 17px;
+  background-color: white;
+  margin-right: 5%;
+  color: #000000;
+  border-radius: 20px;
+  letter-spacing: 4px;
+  font-weight: 700;
+  text-transform: uppercase;
+  transition: 0.5s
+  
+}
+button:hover{
+  background-color: #cdcdcd;
+}

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/form.css')}}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<body>
+    <form action="/home/form" enctype=multipart/form-data method="post">
+    <div class="back_pic">
+        <img src="{{ url_for('static', filename='images/addhome/backgrd.jpg')}}" alt="">
+        </div>
+    <div class="container">
+        <div class="title">
+            Registration Form
+        </div>
+        <div class="part-1">
+            <div class="user-details">
+                <p>User Details</p>
+                <div class="input-box">
+                    <i class="fa-solid fa-user"></i>
+                    <input type="text" name="uname" placeholder="Enter Your Name">
+                </div>
+                <div class="input-box">
+                    <i class="fa-solid fa-phone"></i>
+                    <input type="number" name="pnumber" placeholder="Enter mobile number">
+                </div>
+                <div class="input-box">
+                    <i class="fa-solid fa-location-dot"></i>
+                    <input type="text" name="address" placeholder="Address">
+                </div>
+                <div class="input-box">
+                    <i class="fa-solid fa-envelope"></i>
+                    <input type="email" name="email" placeholder="Enter Your Email">
+                </div>
+            </div>
+            <div class="family-details">
+                <p>Family Details</p>
+                
+                <div class="input-box">
+                    <i class="fa-solid fa-user"></i>
+                    <input type="text" name="parname" placeholder="Enter parent Name">
+                </div>
+                <div class="input-box">
+                    <i class="fa-solid fa-location-dot"></i>
+                    <input type="text" name="paraddress" placeholder="Address">
+                </div>
+                <div class="input-box">
+                    <i class="fa-solid fa-phone"></i>
+                    <input type="number" name="parmobnumber" placeholder="Enter  Parents mobile number">
+                </div>
+                <div class="marital-details">
+                    <p>Marital Status</p>
+                    <div class="check-box" >
+                        <h6>Single/Maried</h6>
+                        <input type="text" name="marital" />
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="part-2">
+            <div class="upload-files">
+                <div class="noc">
+                    <p>Upload NOC Form</p>
+                    <input  type="file" name="MultipleFileUpload[]">
+                </div>
+            </div>
+            <div class="owner-details">
+                <p>Previous Owner Details</p>
+                <div class="input-box">
+                    <i class="fa-solid fa-user"></i>
+                    <input type="text" name="preownname" placeholder="Enter Previous Owner Name">
+                </div>
+                <div class="input-box">
+                    <i class="fa-solid fa-phone"></i>
+                    <input type="number" name="preownnumber" placeholder="Enter past owner mobile number">
+                </div>
+            </div>
+            
+        </div>
+        
+            <button class="submit-button">Submit</button>
+      </div>
+      </form>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Meta Tags -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Bootstrap CSS -->
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/profle.css') }}">
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="favicon.ico">
+
+    <!-- Google Fonts -->
+    <link href='https://fonts.googleapis.com/css?family=Varela+Round' rel='stylesheet' type='text/css'>
+
+    <!-- Animate.css -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/csss/animate.css') }}">
+
+    <!-- Icomoon Icon Fonts -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/csss/icomoon.css') }}">
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/csss/bootstrap.css') }}">
+
+    <!-- Flexslider -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/csss/flexslider.css') }}">
+
+    <!-- Theme Style -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/csss/style.css') }}">
+
+    <!-- Modernizr JS -->
+    <script src="{{ url_for('static', filename='js/jss/modernizr-2.6.2.min.js') }}"></script>
+
+    <title>Rently Profile</title>
+</head>
+
+<body>
+
+    <div id="fh5co-page">
+
+        <!-- Header Section -->
+        <header id="fh5co-header" role="banner">
+            <div class="container">
+                <div class="row">
+                    <div class="header-inner">
+                        <h1><a href="/home">Rently<span>.</span></a></h1>
+                        <nav role="navigation"></nav>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+    </div> <!-- End #fh5co-page -->
+
+    <!-- Profile Section -->
+    <div class="containers">
+        <form method="post">
+            <div class="imgrow">
+                <div class="col-md-6">
+                    <div class="profile-head">
+                        <div class="col-md-2">
+                            <a href="/profile/edit">Edit</a>
+                            <a href="/logout">Logout</a>
+                        </div>
+                        {% if data.is_seller %}
+                            <h2>{{ data.userData.SellerId }}</h2>
+                        {% endif %}
+                        <h2>{{ data.userData.UserName }}</h2>
+                        <h4>Email: {{ data.userData.Email }}</h4>
+                        <h4>Phone: {{ data.userData.PhoneNumber }}</h4>
+                        <h4>Address: {{ data.userData.Address }}</h4>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <br>
+
+    <!-- History Section -->
+    <div class="histo">
+        <h3>History</h3>
+        
+        <!-- Seller Properties -->
+        {% if data.is_seller %}
+            <h4>Sell Properties</h4>
+            {% if data.properties %}
+                {% for i in data.properties %}
+                    <div class="bott_houses">
+                        <div class="col-md-4 item-block animate-box" data-animate-effect="fadeIn">
+                            <div class="fh5co-property">
+                                <figure class="imagespic">
+                                    <img src="{{ url_for('static', filename='images/seller/Sell/' ~ i._id  ~ '/image_1.jpg') }}" alt="#" class="img-responsive">
+                                    {% if i.BuildType == "Sell" %}
+                                        <a href="#" class="tag">For Sell</a>
+                                    {% else %}
+                                        <a href="#" class="tag">For Rent</a>
+                                    {% endif %}
+                                </figure>
+                                <div class="fh5co-property-innter">
+                                    <h3><a href="#">{{ i.BuildName }}</a></h3>
+                                    <div class="price-status">
+                                        {% if i.BuildType == "Sell" %}
+                                            <span class="price">₹{{ i.BuildPrice }} <span class="per"></span></span>
+                                        {% else %}
+                                            <span class="price">₹{{ i.BuildPrice }} <span class="per">/Month</span></span>
+                                        {% endif %}
+                                    </div>
+                                    <p>{{ i.BuildAddr }}</p>
+                                    <p>{{ i.BuildDes }}</p>
+                                    <div class="buttons">
+                                        <a href="#">Edit</a> <a href="/home/house-delete?id={{ i._id }}">Delete</a> <a href="/home/house-applied?id={{ i._id }}">Applied</a> <a href="/home/user-document?id={{ i._id }}">User Document</a>
+                                    </div>
+                                </div>
+                                <p class="fh5co-property-specification">
+                                    <span><strong>{{ i.BuildSqrt }}</strong> Sq Ft</span>  
+                                    <span><strong>{{ i.BuildRooms }}</strong> Beds</span>  
+                                    <span><strong>{{ i.BuildBaths }}</strong> Baths</span>  
+                                    <span><strong>{{ i.BuildGarags }}</strong> Garages</span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            {% else %}
+                <h1>No Properties Found!</h1>
+            {% endif %}
+        {% else %}
+            <h4>Properties Recent</h4>
+            {% if data.latest %}
+                {% for i in data.latest %}
+                    <div class="bott_houses">
+                        <div class="col-md-4 item-block animate-box" data-animate-effect="fadeIn">
+                            <div class="fh5co-property">
+                                <figure>
+                                    <img src="{{ url_for('static', filename='images/seller/Sell/' ~ i._id  ~ '/image_1.jpg') }}" alt="#" class="img-responsive">
+                                    {% if i.BuildType == "Sell" %}
+                                        <a href="#" class="tag">For Sell</a>
+                                    {% else %}
+                                        <a href="#" class="tag">For Rent</a>
+                                    {% endif %}
+                                </figure>
+                                <div class="fh5co-property-innter">
+                                    <h3><a href="#">{{ i.BuildName }}</a></h3>
+                                    <div class="price-status">
+                                        {% if i.BuildType == "Sell" %}
+                                            <span class="price">₹{{ i.BuildPrice }} <span class="per"></span></span>
+                                        {% else %}
+                                            <span class="price">₹{{ i.BuildPrice }} <span class="per">/Month</span></span>
+                                        {% endif %}
+                                    </div>
+                                    <p>{{ i.BuildAddr }}</p>
+                                    <p>{{ i.BuildDes }}</p>
+                                    <div class="buttons">
+                                        {% if i.is_approved == False %}
+                                            <a href="/home/form?id={{ i.SellerId }}&houseId={{ i._id }}">Upload document</a>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                                <p class="fh5co-property-specification">
+                                    <span><strong>{{ i.BuildSqrt }}</strong> Sq Ft</span>  
+                                    <span><strong>{{ i.BuildRooms }}</strong> Beds</span>  
+                                    <span><strong>{{ i.BuildBaths }}</strong> Baths</span>  
+                                    <span><strong>{{ i.BuildGarags }}</strong> Garages</span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            {% else %}
+                <h1>No Properties Found!</h1>
+            {% endif %}
+        {% endif %}
+    </div>
+
+    <br>
+
+    <!-- Sold Properties Section -->
+    <div class="histo">
+        <br>
+        {% if data.is_seller %}
+            {% if data.sold %}
+                <h4>Houses Sold:</h4>
+                {% for i in data.sold %}
+                    <div class="bott_houses">
+                        <div class="col-md-4 item-block animate-box" data-animate-effect="fadeIn">
+                            <div class="fh5co-property">
+                                <figure>
+                                    <img src="{{ url_for('static', filename='images/seller/Sell/' ~ i._id  ~ '/image_1.jpg') }}" alt="#" class="img-responsive">
+                                    <a href="#" class="tag">Sold</a>
+                                </figure>
+                                <div class="fh5co-property-innter">
+                                    <h3><a href="#">{{ i.BuildName }}</a></h3>
+                                    <div class="price-status">
+                                        <span class="price">₹{{ i.BuildPrice }} <span class="per"></span></span>
+                                    </div>
+                                    <p>{{ i.BuildAddr }}</p>
+                                    <p>{{ i.BuildDes }}</p>
+                                   
+                                </div>
+                                <p class="fh5co-property-specification">
+                                    <span><strong>{{ i.BuildSqrt }}</strong> Sq Ft</span>  
+                                    <span><strong>{{ i.BuildRooms }}</strong> Beds</span>  
+                                    <span><strong>{{ i.BuildBaths }}</strong> Baths</span>  
+                                    <span><strong>{{ i.BuildGarags }}</strong> Garages</span>    
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            {% else %}
+                <h4>Houses Sold:</h4>
+                <h1>No Properties Found!</h1>
+            {% endif %}
+        {% else %}
+            <h4>House Bought:</h4>
+            {% if data.Sell %}
+                {% for i in data.Sell %}
+                    <div class="bott_houses">
+                        <div class="col-md-4 item-block animate-box" data-animate-effect="fadeIn">
+                            <div class="fh5co-property">
+                                <figure>
+                                    <img src="{{ url_for('static', filename='images/seller/Sell/' ~ i._id  ~ '/image_1.jpg') }}"alt="#" class="img-responsive">
+                                    {% if i.BuildType == "Sell" %}
+                                        <a href="#" class="tag">For Sell</a>
+                                    {% else %}
+                                        <a href="#" class="tag">For Rent</a>
+                                    {% endif %}
+                                </figure>
+                                <div class="fh5co-property-innter">
+                                    <h3><a href="#">{{ i.BuildName }}</a></h3>
+                                    <div class="price-status">
+                                        {% if i.BuildType == "Sell" %}
+                                            <span class="price">₹{{ i.BuildPrice }} <span class="per"></span></span>
+                                        {% else %}
+                                            <span class="price">₹{{ i.BuildPrice }} <span class="per">/Month</span></span>
+                                        {% endif %}
+                                    </div>
+                                    <p>{{ i.BuildAddr }}</p>
+                                    <p>{{ i.BuildDes }}</p>
+                                    <div class="buttons">
+                                        {% if data.is_approved %}
+                                            <a href="/home/form?id={{ i.SellerId }}&houseId={{ i._id }}">Upload document</a>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                                <p class="fh5co-property-specification">
+                                    <span><strong>{{ i.BuildSqrt }}</strong> Sq Ft</span>  
+                                    <span><strong>{{ i.BuildRooms }}</strong> Beds</span>  
+                                    <span><strong>{{ i.BuildBaths }}</strong> Baths</span>  
+                                    <span><strong>{{ i.BuildGarags }}</strong> Garages</span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            {% else %}
+                <h1>No Properties Found!</h1>
+            {% endif %}
+        {% endif %}
+    </div>
+
+    <br>
+
+    <!-- Rented Properties Section -->
+    <div class="histo">
+        <br>
+        {% if data.is_seller %}
+            {% if data.rent %}
+                <h4>Houses Rented:</h4>
+                {% for i in data.rent %}
+                    <div class="bott_houses">
+                        <div class="col-md-4 item-block animate-box" data-animate-effect="fadeIn">
+                            <div class="fh5co-property">
+                                <figure>
+                                    <img src="{{ url_for('static', filename='images/seller/Sell/' ~ i._id  ~ '/image_1.jpg') }}" alt="#" class="img-responsive">
+                                    <a href="#" class="tag">For Rent</a>
+                                </figure>
+                                <div class="fh5co-property-innter">
+                                    <h3><a href="#">{{ i.BuildName }}</a></h3>
+                                    <div class="price-status">
+                                        <span class="price">${{ i.BuildPrice }} <span class="per">/Month</span></span>
+                                    </div>
+                                    <p>{{ i.BuildAddr }}</p>
+                                    <p>{{ i.BuildDes }}</p>
+                                    
+                                </div>
+                                <p class="fh5co-property-specification">
+                                    <span><strong>{{ i.BuildSqrt }}</strong> Sq Ft</span>  
+                                    <span><strong>{{ i.BuildRooms }}</strong> Beds</span>  
+                                    <span><strong>{{ i.BuildBaths }}</strong> Baths</span>  
+                                    <span><strong>{{ i.BuildGarags }}</strong> Garages</span>    
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            {% else %}
+                <h4>Houses Rented:</h4>
+                <h1>No Properties Found!</h1>
+            {% endif %}
+        {% else %}
+            <h4>Houses Rented:</h4>
+            {% if data.Rent %}
+                {% for i in data.Rent %}
+                    <div class="bott_houses">
+                        <div class="col-md-4 item-block animate-box" data-animate-effect="fadeIn">
+                            <div class="fh5co-property">
+                                <figure>
+                                    <img src="{{ url_for('static', filename='images/seller/Sell/' ~ i._id  ~ '/image_1.jpg') }}" alt="#" class="img-responsive">
+                                    {% if i.BuildType == "Sell" %}
+                                        <a href="#" class="tag">For Sell</a>
+                                    {% else %}
+                                        <a href="#" class="tag">For Rent</a>
+                                    {% endif %}
+                                </figure>
+                                <div class="fh5co-property-innter">
+                                    <h3><a href="/home/rentHome?id={{ i._id }}">{{ i.BuildName }}</a></h3>
+                                    <div class="price-status">
+                                        {% if i.BuildType == "Sell" %}
+                                            <span class="price">${{ i.BuildPrice }} <span class="per"></span></span>
+                                        {% else %}
+                                            <span class="price">${{ i.BuildPrice }} <span class="per">/Month</span></span>
+                                        {% endif %}
+                                    </div>
+                                    <p>{{ i.BuildAddr }}</p>
+                                    <p>{{ i.BuildDes }}</p>
+                                    <div class="buttons">
+                                        {% if data.is_approved %}
+                                            <a href="/home/form?id={{ i.SellerId }}&houseId={{ i._id }}">Upload document</a>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                                <p class="fh5co-property-specification">
+                                    <span><strong>{{ i.BuildSqrt }}</strong> Sq Ft</span>  
+                                    <span><strong>{{ i.BuildRooms }}</strong> Beds</span>  
+                                    <span><strong>{{ i.BuildBaths }}</strong> Baths</span>  
+                                    <span><strong>{{ i.BuildGarags }}</strong> Garages</span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            {% else %}
+                <h1>No Properties Found!</h1>
+            {% endif %}
+        {% endif %}
+    </div>
+
+    <!-- JS Files -->
+    <script src="{{ url_for('static', filename='js/jss/jquery.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/jss/jquery.easing.1.3.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/jss/bootstrap.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/jss/jquery.waypoints.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/jss/jquery.flexslider-min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/jss/main.js') }}"></script>
+
+</body>
+
+</html>

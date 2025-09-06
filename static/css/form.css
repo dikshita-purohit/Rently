@@ -1,0 +1,116 @@
+
+body{
+    height: auto;
+    width: auto;
+}
+
+
+  /*background image*/
+
+.back_pic{
+position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 130%;
+    background-size: cover;
+    z-index: -1;
+    opacity: 80%;
+
+}
+img{
+    height: 100%;
+    width: 100%;
+}
+
+.container{
+    max-width:800px;
+    width:100%;
+    background:rgba(200, 199, 199, 0.771);
+    padding: 25px 15px;
+    
+    margin-top: 5%;
+    margin-left: 25%;
+    border-radius: 10px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
+  
+}
+.part-1{
+    display: flex;
+}
+.title{
+   color: rgb(35, 34, 34);
+   font-size: 40px;
+   margin-left: 250px;
+ 
+}
+.user-details {
+    padding:40px 30px ;
+   
+}
+
+.input-box input{
+
+ height: 25px;
+ border-radius: 5px;
+ border: none;
+ background: none;
+outline: none;
+border-bottom:2px solid #625e5e;
+width: 250px;
+color: black;
+
+}
+.input-box{
+    margin: 20px 0;
+}
+input::placeholder{
+    color: #3b3939;
+}
+
+.family-details{
+    padding:40px 50px; 
+}
+.marital-details{
+   color: #3b3939;
+   padding-top: 15px;
+   margin-left: 35px 50px;
+}
+.check-box{
+    display: flex;
+    font-size: 15px;
+   
+}
+.part-2{
+    display: flex;
+}
+
+.upload-files{
+    padding:5px 20px;
+    color: #3f3d3d;
+    font-size: 15px;
+}
+.noc input{
+    background-color: none;
+}
+.noc{
+    padding-bottom: 10px;
+}
+.owner-details{
+    padding: 0px 90px;
+}
+.submit-button{
+    width: 100px;
+    height: 30px;
+  margin-left: 330px;
+  margin-top: 6%;
+  border-radius: 15px;
+  background:none;
+
+}
+
+p{
+    font-size: large;
+}

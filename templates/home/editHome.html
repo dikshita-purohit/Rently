@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/csss/saler.css')}}">
+        <!--<script>
+            document.getElementById('imageUpload').addEventListener('change', function(event)){
+                const file =
+            }
+        </script>-->
+    </head>
+    <body>
+        
+        <div class="back_pic">
+            <img src="{{ url_for('static', filename='images/addhome/backgrd.jpg')}}" alt="">
+            </div>
+        <h2>ADD HOME</h2>
+        <div class="card">
+            <form method="post" enctype=multipart/form-data action="/home/house-edit">
+            <div class="form-group">
+                <br><br>
+                <label> Building Name : <input class="group" type="text" value="{{ data.buildData.BuildName }}" name="buildName"></label><br><br>
+                <label> Building Address : <input class="group" type="text" value="{{ data.buildData.BuildAddr }}" name="buildAddr"></label><br><br>
+                <label> Building Description : <textarea class="group" type="text" value="{{ data.buildData.BuildDes }}" name="buildDes"></textarea></label><br><br>
+                <label> Building Rooms : <input class="group" type="number" value="{{ data.buildData.BuildRooms }}" name="buildRooms"></label><br><br>
+                <label > Building Garages : <input class="group" type="number" value="{{ data.buildData.BuildGarags }}" name="buildGarag"></label><br><br>
+                <label> Building Baths : <input class="group" type="number" value="{{ data.buildData.BuildBaths }}" name="buildBaths"></label><br><br>
+                <label> Building Sqrt : <input class="group" type="number" value="{{ data.buildData.BuildSqrt }}" name="buildSqrt"></label><br><br>
+                <label> Building Price : <input class="group" type="number" value="{{ data.buildData.BuildPrice }}" name="buildPrice"></label><br><br>
+                <label> Building Type(Sell/Rent): <!--<input class="group" list="buildTypeOptions" type="text" name="buildType">-->
+                    <select class="group" list="buildTypeOptions" value="{{ data.buildData.BuildType }}" type="text" name="buildType">
+                      <option value="Sell">Sell</option>
+                      <option value="Rent">Rent</option>
+                    </select></label><br><br>
+            </div>
+                 <input class="img_uplo" type="file" id="imageUpload" name="MultipleFileUpload[]" multiple=""  accept="image/*"> 
+                 <small class="message" id="fileMessage"> *Please save images as image_1.jpg, image_2.jpeg, etc...*</small>
+                <button type="submit">Submit</button>
+                    
+            </form>
+        </div>
+    
+       
+    </body>
+</html>

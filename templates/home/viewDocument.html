@@ -1,0 +1,63 @@
+<!--<!DOCTYPE html>
+<html>
+
+    <body>
+        {% for i in data.userData %}
+        <div>
+            <p>Name:{{i.userName}}</p>
+            <p>Phone Number: </p>
+            <p>Address: </p>
+            <p>Parent Name: </p>
+            <p>Parent phone number: </p>
+            <p>Parent Address: </p>
+            <p>Owner Name: </p>
+            <p>Owner Address: </p>
+        </div>
+        {% endfor %}
+    </body>
+</html>
+-->
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Submission Success</title>
+</head>
+<body>
+    <h1>Form Submission Successful!</h1>
+    
+    {% if data.userData %}
+    <h2>User Information</h2>
+    <ul>
+        <li><strong>Username:</strong> {{data.userData.UserName }}</li>
+        <li><strong>Phone Number:</strong> {{ data.userData.PhoneNumber }}</li>
+        <li><strong>Address:</strong> {{ data.userData.Address }}</li>
+        <li><strong>Email:</strong> {{ data.userData.Email }}</li>
+    </ul>
+
+    <h2>Parent Information</h2>
+    <ul>
+        <li><strong>Parent Name:</strong> {{ data.userData.FamilyMemberName }}</li>
+        <li><strong>Parent Address:</strong> {{ data.userData.FamilyMemberAddres }}</li>
+        <li><strong>Parent Number:</strong> {{ data.userData.FamilyMemeberPhoneNumber }}</li>
+    </ul>
+
+    <h2>Other Information</h2>
+    <ul>
+        <li><strong>Marital Status:</strong> {{ data.userData.Marital }}</li>
+        <li><strong>Previous Owner Name:</strong> {{ data.userData. PrevOwnerName}}</li>
+        <li><strong>Previous Owner Number:</strong> {{ data.userData.PrevOwnerPhoneNumber }}</li>
+    </ul>
+    <h2>Documents Uplodes: </h2>
+    <iframe src="{{ url_for('static', filename='images/seller/Doc/67626310ceb67bbb2f4b426b/doc_1.pdf') }}" width="100%" height="600px">
+        This browser does not support inline PDFs. You can <a href="{{ url_for('static', filename='images/seller/Doc/67626310ceb67bbb2f4b426b/doc_1.pdf') }}">download the PDF</a> instead.
+    </iframe>
+
+    {%else%}
+    <p>No Data Found</p>
+    {%endif%}
+</body>
+</html>
